@@ -15,6 +15,9 @@ public class ReqResUsersFuncionalidade {
         apiRobot.addRequestParam(key, value);
     }
 
+    public void addToRequestBody(String key, String value) {
+        apiRobot.addToRequestBody(key, value);
+    }
 
     public void request(String method, String url) {
         switch (method) {
@@ -39,10 +42,6 @@ public class ReqResUsersFuncionalidade {
 
     public void checkKey(String key) {
         Assert.assertNotNull(apiRobot.getResponseBody().path(key));
-    }
-
-    public void addToRequestBody(String key, String value) {
-        apiRobot.addToRequestBody(key, value);
     }
 
 

@@ -35,7 +35,6 @@ public class ApiRobot {
                 .log().all()
                 .extract().response();
 
-        setCookies(response.getCookies());
         setStatusCode(response.statusCode());
         setResponseBody(response.getBody());
         setCookies(response.getCookies());
@@ -44,15 +43,15 @@ public class ApiRobot {
     public void postRequest(String url) {
         Response response =
             given()
-                .pathParams(getRequestParams())
+                .contentType("application/json; charset=utf-8")
                 .body(getRequestBody())
+                .pathParams(getRequestParams())
             .when()
                 .post(url)
             .then()
                 .log().all()
                 .extract().response();
 
-        setCookies(response.getCookies());
         setStatusCode(response.statusCode());
         setResponseBody(response.getBody());
         setCookies(response.getCookies());
@@ -61,6 +60,7 @@ public class ApiRobot {
     public void putRequest(String url) {
         Response response =
             given()
+                .contentType("application/json; charset=utf-8")
                 .pathParams(getRequestParams())
                 .body(getRequestBody())
             .when()
@@ -69,7 +69,6 @@ public class ApiRobot {
                 .log().all()
                 .extract().response();
 
-        setCookies(response.getCookies());
         setStatusCode(response.statusCode());
         setResponseBody(response.getBody());
         setCookies(response.getCookies());
@@ -78,6 +77,7 @@ public class ApiRobot {
     public void deleteRequest(String url) {
         Response response =
             given()
+                .contentType("application/json; charset=utf-8")
                 .pathParams(getRequestParams())
                 .body(getRequestBody())
             .when()
@@ -86,7 +86,6 @@ public class ApiRobot {
                 .log().all()
                 .extract().response();
 
-        setCookies(response.getCookies());
         setStatusCode(response.statusCode());
         setResponseBody(response.getBody());
         setCookies(response.getCookies());

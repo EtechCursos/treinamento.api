@@ -1,6 +1,7 @@
 package br.com.etech.api.steps;
 
 import br.com.etech.api.funcionalidades.ReqResUsersFuncionalidade;
+import cucumber.api.PendingException;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Então;
@@ -40,6 +41,12 @@ public class ReqResUsersSteps {
         this.reqResUsersFuncionalidade.request(method, url);
     }
 
+    @Dado("^que eu passe o email \"([^\"]*)\" e a senha \"([^\"]*)\" no body da requisição$")
+    public void queEuPasseOEmailEASenhaNoBodyDaRequisicao(String email, String password) {
+        this.reqResUsersFuncionalidade.addToRequestBody("email", email);
+        this.reqResUsersFuncionalidade.addToRequestBody("password", password);
+    }
+
     @Então("^devo receber o status \"([^\"]*)\"$")
     public void devoReceberOStatus(String status) {
         this.reqResUsersFuncionalidade.checkStatus(status);
@@ -49,4 +56,6 @@ public class ReqResUsersSteps {
     public void devoReceberAChaveNoRetornoDoServico(String key) {
         this.reqResUsersFuncionalidade.checkKey(key);
     }
+
+
 }
