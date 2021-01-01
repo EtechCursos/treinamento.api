@@ -11,8 +11,8 @@ public class ReqResUsersFuncionalidade {
         apiRobot = new ApiRobot();
     }
 
-    public void addPageNumberParam(String pageNumber) {
-        apiRobot.addRequestParam("page", pageNumber);
+    public void addRequestParam(String key, String value) {
+        apiRobot.addRequestParam(key, value);
     }
 
     public void requestUsersList(String url) {

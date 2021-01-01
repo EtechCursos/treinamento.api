@@ -10,3 +10,10 @@ Funcionalidade: Endpoint users
     Quando realizar uma requisição GET na url "https://reqres.in/api/users?page={page}"
     Então devo receber o status "200"
     E devo receber a chave "data" no retorno do serviço
+
+  @getUser
+  Cenario: Pegar usuário por id
+    Dado que eu escolha a id de usuário "2" para pesquisa
+    Quando realizar uma requisição GET na url "https://reqres.in/api/users/{id}"
+    Então devo receber o status "200"
+    E devo receber a chave "data" no retorno do serviço

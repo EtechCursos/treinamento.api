@@ -21,7 +21,7 @@ public class ReqResUsersSteps {
 
     @Dado("^que eu escolha a página \"([^\"]*)\" para pesquisa$")
     public void queEuEscolhaAPáginaParaPesquisa(String pageNumber) {
-        this.reqResUsersFuncionalidade.addPageNumberParam(pageNumber);
+        this.reqResUsersFuncionalidade.addRequestParam("page", pageNumber);
     }
 
     @Então("^devo receber o status \"([^\"]*)\"$")
@@ -35,4 +35,8 @@ public class ReqResUsersSteps {
     }
 
 
+    @Dado("^que eu escolha a id de usuário \"([^\"]*)\" para pesquisa$")
+    public void queEuEscolhaAIdDeUsuarioParaPesquisa(String id) {
+        this.reqResUsersFuncionalidade.addRequestParam("id", id);
+    }
 }
