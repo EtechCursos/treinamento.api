@@ -47,6 +47,11 @@ public class ReqResUsersSteps {
         this.reqResUsersFuncionalidade.addToRequestBody("password", password);
     }
 
+    @Dado("^que eu passe o email \"([^\"]*)\" no body da requisição$")
+    public void queEuPasseOEmailNoBodyDaRequisição(String email) {
+        this.reqResUsersFuncionalidade.addToRequestBody("email", email);
+    }
+
     @Então("^devo receber o status \"([^\"]*)\"$")
     public void devoReceberOStatus(String status) {
         this.reqResUsersFuncionalidade.checkStatus(status);
@@ -56,6 +61,7 @@ public class ReqResUsersSteps {
     public void devoReceberAChaveNoRetornoDoServico(String key) {
         this.reqResUsersFuncionalidade.checkKey(key);
     }
+
 
 
 }
