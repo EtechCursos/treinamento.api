@@ -17,3 +17,9 @@ Funcionalidade: Endpoint users
     Quando realizar uma requisição GET na url "https://reqres.in/api/users/{id}"
     Então devo receber o status "200"
     E devo receber a chave "data" no retorno do serviço
+
+  @getInvalidUser
+  Cenario: Pegar usuário inválido
+    Dado que eu escolha a id de usuário "99" para pesquisa
+    Quando realizar uma requisição GET na url "https://reqres.in/api/users/{id}"
+    Então devo receber o status "404"
