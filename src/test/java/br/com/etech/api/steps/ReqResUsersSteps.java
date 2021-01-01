@@ -1,6 +1,7 @@
 package br.com.etech.api.steps;
 
 import br.com.etech.api.funcionalidades.ReqResUsersFuncionalidade;
+import cucumber.api.PendingException;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Então;
@@ -17,6 +18,11 @@ public class ReqResUsersSteps {
     @Quando("^realizar uma requisição GET na url \"([^\"]*)\"$")
     public void realizarUmaRequisiçãoGETNoEndpoint(String url) {
         this.reqResUsersFuncionalidade.requestUsersList(url);;
+    }
+
+    @Quando("^realizar uma requisição \"([^\"]*)\" na url \"([^\"]*)\"$")
+    public void realizarUmaRequisiçãoNaUrl(String method, String url) {
+        this.reqResUsersFuncionalidade.request(method, url);
     }
 
     @Dado("^que eu escolha a página \"([^\"]*)\" para pesquisa$")
@@ -39,4 +45,12 @@ public class ReqResUsersSteps {
     public void queEuEscolhaAIdDeUsuarioParaPesquisa(String id) {
         this.reqResUsersFuncionalidade.addRequestParam("id", id);
     }
+
+    @Dado("^que eu passe o nome \"([^\"]*)\" e o cargo \"([^\"]*)\" no body da requisição$")
+    public void queEuPasseONomeEOCargoNoBodyDaRequisição(String name, String job) {
+        this.reqResUsersFuncionalidade.addToRequestBody("name", name);
+        this.reqResUsersFuncionalidade.addToRequestBody("job", job);
+    }
+
+
 }

@@ -42,10 +42,23 @@ public class ApiRobot {
     }
 
     public void postRequest(String url) {
+        Response response =
+            given()
+                .pathParams(getRequestParams())
+                .body(getRequestBody())
+            .when()
+                .post(url)
+            .then()
+                .log().all()
+                .extract().response();
 
+        setCookies(response.getCookies());
+        setStatusCode(response.statusCode());
+        setResponseBody(response.getBody());
+        setCookies(response.getCookies());
     }
 
-    public void updateRequest(String url) {
+    public void putRequest(String url) {
 
     }
 
@@ -65,7 +78,7 @@ public class ApiRobot {
         return requestBody;
     }
 
-    private void addToRequestBody(String key, String value) {
+    public void addToRequestBody(String key, String value) {
         this.requestBody.put(key, value);
     }
 
@@ -73,7 +86,7 @@ public class ApiRobot {
         return requestHeaders;
     }
 
-    private void addToRequestHeader(String key, String value) {
+    public void addToRequestHeader(String key, String value) {
         this.requestHeaders.put(key, value);
     }
 

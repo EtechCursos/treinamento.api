@@ -19,6 +19,22 @@ public class ReqResUsersFuncionalidade {
         apiRobot.getRequest(url);
     }
 
+    public void request(String method, String url) {
+        switch (method) {
+            case "GET":
+                this.apiRobot.getRequest(url);
+                break;
+            case "POST":
+                this.apiRobot.postRequest(url);
+                break;
+            case "PUT":
+                this.apiRobot.putRequest(url);
+                break;
+            case "DELETE":
+                this.apiRobot.deleteRequest(url);
+                break;
+        }
+    }
 
     public void checkStatus(String status) {
         Assert.assertTrue(Integer.parseInt(status) == apiRobot.getStatusCode());
@@ -27,4 +43,10 @@ public class ReqResUsersFuncionalidade {
     public void checkKey(String key) {
         Assert.assertNotNull(apiRobot.getResponseBody().path(key));
     }
+
+    public void addToRequestBody(String key, String value) {
+        apiRobot.addToRequestBody(key, value);
+    }
+
+
 }
