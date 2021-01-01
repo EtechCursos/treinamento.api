@@ -76,7 +76,20 @@ public class ApiRobot {
     }
 
     public void deleteRequest(String url) {
+        Response response =
+            given()
+                .pathParams(getRequestParams())
+                .body(getRequestBody())
+            .when()
+                .delete(url)
+            .then()
+                .log().all()
+                .extract().response();
 
+        setCookies(response.getCookies());
+        setStatusCode(response.statusCode());
+        setResponseBody(response.getBody());
+        setCookies(response.getCookies());
     }
 
     public Map<String, String> getRequestParams() {

@@ -11,6 +11,13 @@ Funcionalidade: Endpoint users
     Então devo receber o status "200"
     E devo receber a chave "data" no retorno do serviço
 
+  @getUsersWithDelay
+  Cenario: Pegar pagina da lista de usuários com delay
+    Dado que eu escolha o valor "3" para o delay da pesquisa
+    Quando realizar uma requisição "GET" na url "https://reqres.in/api/users?delay={delay}"
+    Então devo receber o status "200"
+    E devo receber a chave "data" no retorno do serviço
+
   @getUser
   Cenario: Pegar usuário por id
     Dado que eu escolha a id de usuário "2" para pesquisa
@@ -37,3 +44,9 @@ Funcionalidade: Endpoint users
     Quando realizar uma requisição "PUT" na url "https://reqres.in/api/users"
     Então devo receber o status "200"
     E devo receber a chave "updatedAt" no retorno do serviço
+
+  @deleteUser
+  Cenario: deletar usuário
+    Dado que eu escolha a id de usuário "2" para pesquisa
+    Quando realizar uma requisição "DELETE" na url "https://reqres.in/api/users/{id}"
+    Então devo receber o status "204"

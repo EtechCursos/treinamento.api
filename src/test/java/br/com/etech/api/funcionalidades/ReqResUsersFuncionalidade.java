@@ -15,9 +15,6 @@ public class ReqResUsersFuncionalidade {
         apiRobot.addRequestParam(key, value);
     }
 
-    public void requestUsersList(String url) {
-        apiRobot.getRequest(url);
-    }
 
     public void request(String method, String url) {
         switch (method) {
