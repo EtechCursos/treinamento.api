@@ -59,7 +59,20 @@ public class ApiRobot {
     }
 
     public void putRequest(String url) {
+        Response response =
+            given()
+                .pathParams(getRequestParams())
+                .body(getRequestBody())
+            .when()
+                .put(url)
+            .then()
+                .log().all()
+                .extract().response();
 
+        setCookies(response.getCookies());
+        setStatusCode(response.statusCode());
+        setResponseBody(response.getBody());
+        setCookies(response.getCookies());
     }
 
     public void deleteRequest(String url) {

@@ -15,18 +15,13 @@ public class ReqResUsersSteps {
         reqResUsersFuncionalidade = new ReqResUsersFuncionalidade();
     }
 
-    @Quando("^realizar uma requisição GET na url \"([^\"]*)\"$")
-    public void realizarUmaRequisiçãoGETNoEndpoint(String url) {
-        this.reqResUsersFuncionalidade.requestUsersList(url);;
-    }
-
     @Quando("^realizar uma requisição \"([^\"]*)\" na url \"([^\"]*)\"$")
-    public void realizarUmaRequisiçãoNaUrl(String method, String url) {
+    public void realizarUmaRequisicaoNaUrl(String method, String url) {
         this.reqResUsersFuncionalidade.request(method, url);
     }
 
     @Dado("^que eu escolha a página \"([^\"]*)\" para pesquisa$")
-    public void queEuEscolhaAPáginaParaPesquisa(String pageNumber) {
+    public void queEuEscolhaAPaginaParaPesquisa(String pageNumber) {
         this.reqResUsersFuncionalidade.addRequestParam("page", pageNumber);
     }
 
@@ -47,7 +42,7 @@ public class ReqResUsersSteps {
     }
 
     @Dado("^que eu passe o nome \"([^\"]*)\" e o cargo \"([^\"]*)\" no body da requisição$")
-    public void queEuPasseONomeEOCargoNoBodyDaRequisição(String name, String job) {
+    public void queEuPasseONomeEOCargoNoBodyDaRequisicao(String name, String job) {
         this.reqResUsersFuncionalidade.addToRequestBody("name", name);
         this.reqResUsersFuncionalidade.addToRequestBody("job", job);
     }
